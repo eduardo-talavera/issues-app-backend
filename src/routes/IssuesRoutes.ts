@@ -23,6 +23,7 @@ router.post(
   IssuesController.createIssue
 );
 
+// GET /issues?state=&priority=&search=&page=&limit=
 router.get('/', IssuesController.getIssues);
 
 router.param('issueId', IssueExists);

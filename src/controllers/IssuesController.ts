@@ -24,10 +24,44 @@ export class IssuesController {
 
   static getIssues = async (req: Request, res: Response) => {
     try {
-      const issues = await Issue.find().populate('author').populate('userAssigned');
-      res.status(200).json(issues);
-    } catch (error) {
-      res.status(500).send('Error al obtener el ticket');
+      const { state, priority, search, page = 1, limit = 10 } = req.query;
+
+      const filters: any = {};
+
+      if (state) filters.state = state;
+      if (priority) filters.priority = priority;
+      if (search) {
+        filters.$or = [
+          { title: { $regex: search as string, $options: 'i' } },
+          { description: { $regex: search as string, $options: 'i' } },
+        ];
+      }
+
+      const skip = (Number(page) - 1) * Number(limit);
+
+      const [issues, total] = await Promise.all([
+        Issue.find(filters)
+          .populate('author', 'name email')
+          .populate('userAssigned', 'name email')
+          .sort({ createdAt: -1 })
+          .skip(skip)
+          .limit(Number(limit)),
+
+        Issue.countDocuments(filters),
+      ]);
+
+      res.json({
+        data: issues,
+        pagination: {
+          total,
+          page: Number(page),
+          limit: Number(limit),
+          totalPages: Math.ceil(total / Number(limit)),
+        },
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Error al obtener los issues' });
     }
   };
 
