@@ -5,13 +5,15 @@ import { User } from '../models/User';
 
 export class IssuesController {
   static createIssue = async (req: AuthRequest, res: Response) => {
-    const { title, description, userAssigned } = req.body;
+    const { title, description, userAssigned, priority, state } = req.body;
     try {
       const issue = new Issue({
         title,
         description,
         author: req.user.id,
         userAssigned: userAssigned ?? null,
+        priority,
+        state
       });
 
       await issue.save();
@@ -77,6 +79,9 @@ export class IssuesController {
     try {
       req.issue.title = req.body.title;
       req.issue.description = req.body.description;
+      req.issue.state = req.body.state;
+      req.issue.priority = req.body.priority;
+      
       await req.issue.save();
 
       res.status(200).send('ticket actualizado exitosamente');
