@@ -1,6 +1,6 @@
 import { CorsOptions } from 'cors';
 
-export const corsConfig: CorsOptions = {
+const whitelistConfig: CorsOptions = {
   origin: function (origin, callback) {
     const whiteList = [process.env.FRONTEND_URL];
     if (whiteList.includes(origin)) {
@@ -11,3 +11,15 @@ export const corsConfig: CorsOptions = {
   },
   credentials: true
 };
+
+const allOriginsConfig = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}
+
+export const corsOptions = {
+  all_origins: allOriginsConfig,
+  whitelist: whitelistConfig
+}
