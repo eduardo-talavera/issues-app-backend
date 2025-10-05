@@ -30,6 +30,7 @@ app.use(morgan('dev'));
 // Routes
 app.use('/seed', seedRoutes);
 app.use('/auth', authRoutes);
-app.use('/issues', issuesRoutes)
+app.use('/issues', issuesRoutes);
+
 
 export default app

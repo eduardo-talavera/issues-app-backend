@@ -64,7 +64,7 @@ export class AuthController {
       const accessToken = signAccessToken(payload);
       const refreshToken = signRefreshToken(payload);
 
-      // Save refresh token in DB (simple approach)
+      // Guardado de refresh token en BD (simple approach)
       user.refreshTokens.push({ token: refreshToken });
       await user.save();
 

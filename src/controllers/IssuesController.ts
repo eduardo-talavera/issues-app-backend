@@ -19,7 +19,6 @@ export class IssuesController {
       await issue.save();
       res.status(201).send('Ticket creado exitosamente');
     } catch (error) {
-      console.error('error al crear ticket: ', error);
       res.status(500).send('Error al crear el ticket');
     }
   };

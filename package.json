@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "test": "npx vitest run",
+    "test:coverage": "npx vitest run --coverage"
   },
   "keywords": [],
   "author": "Edgar Eduardo Talavera <edgar.developer.talavera77@gmaiil.com>",
@@ -22,21 +24,24 @@
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
-    "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.9",
     "@types/node": "^24.6.2",
-    "jest": "^29.7.0",
+    "@types/supertest": "^6.0.3",
+    "@vitest/coverage-v8": "^3.2.4",
+    "mongodb-memory-server": "^10.2.2",
     "nodemon": "^3.1.9",
-    "ts-jest": "^29.2.6",
+    "supertest": "^7.1.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.2.4"
   }
 }

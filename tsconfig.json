@@ -9,7 +9,12 @@
         "strict": false,
         "sourceMap": true,
         "esModuleInterop": true,
-        "declaration": true
+        "declaration": true,
+
+        "baseUrl": "./src", 
+        "paths": {
+          "@/*": ["*"]
+        },
     },
     "include": ["src/**/*.ts"]
 }
