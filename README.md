@@ -212,5 +212,9 @@ PARAMS: :issueId
 
 <br />
 
-# Pasos para configuracion de protecto frontend
+## Pasos para configuracion de protecto frontend: 
+
+<br />
+
+[Haz clic aqui, para redirigir al repositorio frontend con los pasos a seguir](https://github.com/eduardo-talavera/issues-app-frontend)
 
