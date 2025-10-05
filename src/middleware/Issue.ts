@@ -16,7 +16,10 @@ export async function IssueExists(
 ) {
   try {
     const { issueId } = req.params;
-    const issue = await Issue.findById(issueId);
+    const issue = 
+      await Issue.findById(issueId)
+       .populate('author', 'name email')
+       .populate('userAssigned', 'name email')
 
     if (!issue) {
       const error = new Error('Ticket no encontrado');
@@ -27,7 +30,6 @@ export async function IssueExists(
     req.issue = issue;
     next();
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: 'Error del servidor' });
   }
 }

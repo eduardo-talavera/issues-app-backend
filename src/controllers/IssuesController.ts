@@ -69,7 +69,7 @@ export class IssuesController {
 
   static getIssueById = async (req: Request, res: Response) => {
     try {
-      res.json(req.issue);
+      res.status(200).json(req.issue)
     } catch (error) {
       res.status(500).send('Error al obtener el ticket');
     }
@@ -81,7 +81,7 @@ export class IssuesController {
       req.issue.description = req.body.description;
       req.issue.state = req.body.state;
       req.issue.priority = req.body.priority;
-      
+
       await req.issue.save();
 
       res.status(200).send('ticket actualizado exitosamente');
