@@ -2,10 +2,10 @@
 
 <br />
 
-## Requerimientos minimos
+## Requerimientos mínimos
 - Node >= 22.20.0
 
-## Pasos para ejecución de proyecto backend 
+## Pasos para la ejecución del proyecto backend 
 
 <br />
 
@@ -64,7 +64,7 @@ MongoDB Conectado en localhost:27017
 
 <br />
 
-#### Paso 5 ejecucion de request seed para aprovisionar la base de datos local con datos de prueba: ejecute la siguiente solicitud de tipo POST en una herramienta de solicitudes http como [Postman](https://www.postman.com/), [Imsomnia](https://insomnia.rest/download) o Thunder client para VSCode.
+#### Paso 5 ejecución de request seed para aprovisionar la base de datos local con datos de prueba: ejecute la siguiente solicitud de tipo POST en una herramienta de solicitudes http como [Postman](https://www.postman.com/), [Imsomnia](https://insomnia.rest/download) o Thunder client para VSCode.
 
 ```http
 POST http://localhost:4000/seed
@@ -80,7 +80,7 @@ POST http://localhost:4000/seed
 }
 ```
 
-#### Esto creara tickets y usuarios de prueba incluidos los que continuación se muestran, que podra usar para hacer sus pruebas
+#### Esto creara tickets y usuarios de prueba incluidos los que continuación se muestran, que podras usar para hacer tus pruebas
 
 ```ts
     const testUser1 = {
@@ -121,7 +121,7 @@ CORS_STRATEGY=whitelist
 
 <br />
 
-#### Paso 7 a continuacion detenga el servidor backend y vuelva a arrancarlo con `npm run dev`.
+#### Paso 7 a continuación detenga el servidor backend y vuelva a arrancarlo con `npm run dev`.
 
 <br />
 
@@ -129,14 +129,14 @@ CORS_STRATEGY=whitelist
 
 <br />
 
-## Antes de que pasemos al frontend te dejo los endpoints disponibles en el API...
+### Antes de que pasemos al frontend dejo los endpoints disponibles en el API...
 
 <br />
 
 
 #### `Autenticación`
 ```shell
-## Inicio de sesion
+## Inicio de sesión
 METHOD: POST 
 ENDPOINT: /auth/login
 BODY: { "email": "email.test@mail.com", "password": "password123" }
@@ -151,7 +151,7 @@ METHOD: POST
 ENDPOINT: /auth/refresh
 COOKIES:  "refreshToken": "****************************************" 
 
-# Cerrar sesion
+# Cerrar sesión
 METHOD: POST 
 ENDPOINT: /auth/logout
 COOKIES:  "refreshToken": "****************************************" 
@@ -208,11 +208,11 @@ PARAMS: :issueId
 
 <br />
 
-#### Para arrancar las pruebas automatizadas puede ejecutar el comando `npm run test`
+#### Para arrancar las pruebas automatizadas puede ejecutar el comando `npm run test` y para ejecurarlos con umbral de cobertura ejecute `npm run test:coverage`
 
 <br />
 
-## Pasos para configuracion de protecto frontend: 
+## Pasos para la configuración del proyecto frontend: 
 
 <br />
 
