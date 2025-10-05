@@ -26,10 +26,10 @@ CORS_STRATEGY=all_origins
 
 <br />
 
-#### Paso 2 una vez tenemos nuestras variables listas el siguiente paso es abrir el proyecto en una terminal o cmd y ejecutar los comandos a continuación para ingresar al proyecto e instalar las dependencias.
+#### Paso 2 una vez tenemos nuestras variables listas el siguiente paso es abrir el proyecto en una terminal o cmd y ejecutar el siguiente comando para instalar las dependencias.
 
 ```shell
-cd backend && npm install
+npm install
 ```
 
 <br />
