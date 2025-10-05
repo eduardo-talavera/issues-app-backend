@@ -1,4 +1,4 @@
-# Issues App Guia de Ejecucion
+# Issues App Guia de Ejecución
 
 <br />
 
