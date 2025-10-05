@@ -9,7 +9,7 @@
 
 <br />
 
-#### Paso 1 configuración de variables de entorno: una vez hallas clonado el proyecto entra a la carpeta backend y renombra el archivo .env.example a .env, deberia quedar algo como lo siguiente...
+#### Paso 1 configuración de variables de entorno: una vez hallas clonado el proyecto abrelo y renombra el archivo .env.example a .env, deberia quedar algo como lo siguiente...
 
 ```shell
 FRONTEND_URL=http://localhost:5173
