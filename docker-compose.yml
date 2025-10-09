@@ -6,7 +6,7 @@ services:
     ports:
       - "4000:4000"
     env_file:
-      - .env
+      - .env.prod
     depends_on:
       - mongo
     command: npm run start:prod
@@ -19,7 +19,7 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: Y78gsjsfgt
+      MONGO_INITDB_ROOT_PASSWORD: DKLD9393ks91
     volumes:
       - mongo_data:/data/db
 
