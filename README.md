@@ -7,7 +7,7 @@
 
 <br />
 
-#### Puede instalar docker desktop haciendo clic en el siguiente enlace: [descargar docker desktop.](https://www.docker.com/products/docker-desktop/)
+#### Puede descargar docker desktop haciendo clic en el siguiente enlace: [descargar docker desktop.](https://www.docker.com/products/docker-desktop/)
 
 <br />
 
