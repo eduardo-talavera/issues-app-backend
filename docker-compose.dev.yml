@@ -1,7 +1,9 @@
 services:
   api:
-    build: .
-    container_name: issues-app-api
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: issues-app-api-dev
     restart: always
     ports:
       - "4000:4000"
@@ -9,11 +11,14 @@ services:
       - .env
     depends_on:
       - mongo
-    command: npm run start:prod
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
 
   mongo:
     image: mongo:6.0
-    container_name: issues-app-db
+    container_name: issues-app-db-dev
     restart: always
     ports:
       - "27017:27017"
@@ -21,7 +26,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: Y78gsjsfgt
     volumes:
-      - mongo_data:/data/db
+      - mongo_data_dev:/data/db
 
 volumes:
-  mongo_data:
+  mongo_data_dev:

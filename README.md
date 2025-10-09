@@ -3,7 +3,13 @@
 <br />
 
 ## Requerimientos mínimos
-- Node >= 22.20.0
+- Tener en ejecución el demonio de docker
+
+<br />
+
+#### Puede instalar docker desktop haciendo clic en el siguiente enlace: [descargar docker desktop.](https://www.docker.com/products/docker-desktop/)
+
+<br />
 
 ## Pasos para la ejecución del proyecto backend 
 
@@ -14,7 +20,7 @@
 ```shell
 FRONTEND_URL=http://localhost:5173
 PORT=4000
-MONGO_URI=mongodb://root:Y78gsjsfgt@localhost:27017/issues_db?authSource=admin
+MONGO_URI=mongodb://root:Y78gsjsfgt@mongo:27017/issues_db?authSource=admin
 ACCESS_TOKEN_SECRET=alguna_clave_muy_secreta_access
 REFRESH_TOKEN_SECRET=otra_clave_muy_secreta_refresh
 ACCESS_TOKEN_EXPIRES=15m
@@ -26,45 +32,17 @@ CORS_STRATEGY=all_origins
 
 <br />
 
-#### Paso 2 una vez tenemos nuestras variables listas el siguiente paso es abrir el proyecto en una terminal o cmd y ejecutar el siguiente comando para instalar las dependencias.
+#### Paso 2 Ejecutar el siguiente comando para arrancar el servidor local.
 
 ```shell
-npm install
+make dev
 ```
+
+#### El comando anterior ejecutara internamente el siguiente comando de docker `docker compose -f docker-compose-dev.yml up --build` lo que creara una instancia de base de datos en mongDB con el usuario root y la contraseña: Y78gsjsfgt, instalara las dependencias, arrancara el proyecto y lo expondra en localhost en el puerto 4000  👉 http://localhost:4000
 
 <br />
 
-#### Paso 3 ya instaladas las dependencias ejecute el siguiente comando para arrancar un servicio de docker que nos facilitara la conexion a la base de datos con mongoDB 
-
-```shell
-docker compose up -d
-```
-
-#### El comando anterior creara una instancia de base de datos en mongDB con el usuario root y la contraseña: Y78gsjsfgt
-
-<br />
-
-#### Paso 4 ya con el servicio de docker funcionando podremos ejecutar el comando a continuacion para arrancar nuestro proyecto en modo de desarrollo esto arrancara el proyecto en localhost en el puerto 4000 👉 http://localhost:4000
-
-```shell
-npm run dev
-```
-
-#### Sabremos que todo esta correcto si vemos los siguientes mensajes en consola...
-```shell
-[nodemon] 3.1.9
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: ts,json
-[nodemon] starting `ts-node src/index.ts`
-REST API funcionando en el puerto 4000
-MongoDB Conectado en localhost:27017
-
-```
-
-<br />
-
-#### Paso 5 ejecución de request seed para aprovisionar la base de datos local con datos de prueba: ejecute la siguiente solicitud de tipo POST en una herramienta de solicitudes http como [Postman](https://www.postman.com/), [Imsomnia](https://insomnia.rest/download) o Thunder client para VSCode.
+#### Paso 3 ejecución de request seed para aprovisionar la base de datos local con datos de prueba: ejecute la siguiente solicitud de tipo POST en una herramienta de solicitudes http como [Postman](https://www.postman.com/), [Imsomnia](https://insomnia.rest/download) o Thunder client para VSCode.
 
 ```http
 POST http://localhost:4000/seed
@@ -104,12 +82,12 @@ POST http://localhost:4000/seed
 
 <br />
 
-#### Paso 6 Comente la variable `CORS_STRATEGY=all_origins` y descomente `CORS_STRATEGY=whitelist`, esto es necesario dado que se requiere una configuración de cors especifica para la estrategia de sesion utilizada en el proyecto. Su archivo de variables deberia verse algo asi...
+#### Paso 4 Comente la variable `CORS_STRATEGY=all_origins` y descomente `CORS_STRATEGY=whitelist`, esto es necesario dado que se requiere una configuración de cors especifica para la estrategia de sesion utilizada en el proyecto. Su archivo de variables deberia verse algo asi...
 
 ```shell
 FRONTEND_URL=http://localhost:5173
 PORT=4000
-MONGO_URI=mongodb://root:Y78gsjsfgt@localhost:27017/issues_db?authSource=admin
+MONGO_URI=mongodb://root:Y78gsjsfgt@mongo:27017/issues_db?authSource=admin
 ACCESS_TOKEN_SECRET=alguna_clave_muy_secreta_access
 REFRESH_TOKEN_SECRET=otra_clave_muy_secreta_refresh
 ACCESS_TOKEN_EXPIRES=15m
@@ -121,7 +99,7 @@ CORS_STRATEGY=whitelist
 
 <br />
 
-#### Paso 7 a continuación detenga el servidor backend y vuelva a arrancarlo con `npm run dev`.
+#### Paso 5 a continuación detenga el servidor backend con la combinacion de teclas ctrl + c y vuelva a arrancarlo con `make dev`.
 
 <br />
 
