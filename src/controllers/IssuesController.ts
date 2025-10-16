@@ -44,7 +44,7 @@ export class IssuesController {
         Issue.find(filters)
           .populate('author', 'name email')
           .populate('userAssigned', 'name email')
-          .sort({ createdAt: -1 })
+          .sort({ createdAt: -1, _id: -1 })
           .skip(skip)
           .limit(Number(limit)),
 

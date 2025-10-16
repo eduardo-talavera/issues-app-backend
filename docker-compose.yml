@@ -1,6 +1,16 @@
-version: "3.8"
-
 services:
+  api:
+    build: .
+    container_name: issues-app-api
+    restart: always
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env.prod
+    depends_on:
+      - mongo
+    command: npm run start:prod
+
   mongo:
     image: mongo:6.0
     container_name: issues-app-db
@@ -9,7 +19,7 @@ services:
       - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: Y78gsjsfgt
+      MONGO_INITDB_ROOT_PASSWORD: DKLD9393ks91
     volumes:
       - mongo_data:/data/db
 
