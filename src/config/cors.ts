@@ -1,4 +1,4 @@
-import { FRONTEND_URL } from '@/utils/constants';
+import { FRONTEND_URL } from '../utils/constants';
 import { CorsOptions } from 'cors';
 
 
