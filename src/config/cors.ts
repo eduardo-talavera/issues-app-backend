@@ -5,7 +5,8 @@ import { CorsOptions } from 'cors';
 const whitelistConfig: CorsOptions = {
   origin: function (origin, callback) {
     const whiteList = [FRONTEND_URL, 'http://localhost:5173'];
-    if (whiteList.includes(origin)) {
+    // (!origin) enabled only for test in postman
+    if (!origin || whiteList.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
