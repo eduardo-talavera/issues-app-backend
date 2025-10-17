@@ -65,7 +65,7 @@ export class SeedController {
       const states = ['open', 'in_progress', 'closed'];
       const priorities = ['low', 'medium', 'hight'];
   
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 30; i++) {
         const randomAuthor = faker.helpers.arrayElement(savedUsers);
         const randomAssignee = faker.helpers.arrayElement(savedUsers);
         const randomState = faker.helpers.arrayElement(states);
