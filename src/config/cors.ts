@@ -1,7 +1,6 @@
 import { FRONTEND_URL } from '@/utils/constants';
 import { CorsOptions } from 'cors';
 
-console.log('FRONTEND_URL desde cors: ', FRONTEND_URL);
 
 const whitelistConfig: CorsOptions = {
   origin: function (origin, callback) {
