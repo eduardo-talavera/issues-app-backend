@@ -9,7 +9,6 @@ export const {
   REFRESH_TOKEN_EXPIRES = '7d',
   MONGO_URI,
   NODE_ENV='development',
-  CORS_STRATEGY,
   FRONTEND_URL
 } = process.env;
 
