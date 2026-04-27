@@ -2,6 +2,7 @@ import type { Request, Response } from 'express';
 import { Issue } from '../models/Issue';
 import { AuthRequest } from '../middleware/auth';
 import { User } from '../models/User';
+import { notify } from "../services/notify";
 
 export class IssuesController {
   static createIssue = async (req: AuthRequest, res: Response) => {
@@ -17,6 +18,9 @@ export class IssuesController {
       });
 
       await issue.save();
+
+      await notify(`${req.user.name} ha creado un nuevo ticket: ${issue.title}`);
+
       res.status(201).send('Ticket creado exitosamente');
     } catch (error) {
       res.status(500).send('Error al crear el ticket');
@@ -74,7 +78,7 @@ export class IssuesController {
     }
   };
 
-  static updateIssue = async (req: Request, res: Response) => {
+  static updateIssue = async (req: AuthRequest, res: Response) => {
     try {
       req.issue.title = req.body.title;
       req.issue.description = req.body.description;
@@ -82,6 +86,7 @@ export class IssuesController {
       req.issue.priority = req.body.priority;
 
       await req.issue.save();
+      await notify(`${req.user.name} ha actualizado el ticket: ${req.issue.title}`);
 
       res.status(200).send('ticket actualizado exitosamente');
     } catch (error) {
@@ -105,17 +110,21 @@ export class IssuesController {
 
       await req.issue.deleteOne();
 
+      await notify(`${req.user.name} ha eliminado el ticket: ${req.issue.title}`);
+
       res.send('Ticket eliminado exitosamente');
     } catch (error) {
       res.status(500).send('Error al actualizar la tarea');
     }
   };
 
-  static updateState = async (req: Request, res: Response) => {
+  static updateState = async (req: AuthRequest, res: Response) => {
     try {
       const { state } = req.body;
       req.issue.state = state;
       await req.issue.save();
+
+      await notify(`${req.user.name} ha actualizado el estado del ticket "${req.issue.title}" a ${state}`);
 
       res.status(200).send('Estado del ticket actualizado exitosamente');
     } catch (error) {

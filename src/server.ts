@@ -1,4 +1,5 @@
 import express from 'express';
+import http from 'http';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -9,6 +10,7 @@ import { connectDB } from './config/db';
 import seedRoutes from './routes/sedRoutes';
 import issuesRoutes from './routes/IssuesRoutes';
 import authRoutes from './routes/authRoutes';
+import { initSockets } from './sockets';
 
 dotenv.config();
 
@@ -31,5 +33,7 @@ app.use('/seed', seedRoutes);
 app.use('/auth', authRoutes);
 app.use('/issues', issuesRoutes);
 
+const server = http.createServer(app);
+initSockets(server);
 
-export default app
+export default server;
